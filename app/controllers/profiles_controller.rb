@@ -17,6 +17,11 @@ class ProfilesController < ApplicationController
 		end
 	end
 
+	def show
+		@profile = Profile.find(params[:id])
+	end
+
+
 	def profile_params
 		params.require(:profile).permit(:frist_name, :picture, :description)
 	end
