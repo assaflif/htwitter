@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   root 'static_pages#main_page'
 
   resources :tweets
+
+  resources :profiles
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
