@@ -1,8 +1,10 @@
 <ul class="list-group">
 	<% @tweets.each do |tweet| %>
-		<li class="list-group-item">
-			<%= tweet.content %> | 
-			<%= tweet.user.email %>
-		</li>
+		<% if tweet.user.profile %>
+			<li class="list-group-item">
+				<%= tweet.content %> | 
+				<%= link_to tweet.user.profile.frist_name, profile_path(tweet.user.profile) %>
+			</li>
+		<% end %>
 	<% end %>
 </ul>
