@@ -4,6 +4,16 @@
 			<li class="list-group-item">
 				<%= tweet.content %> | 
 				<%= link_to tweet.user.profile.frist_name, profile_path(tweet.user.profile) %>
+				<% if current_user.following?(tweet.user) %>
+					<button type="button" class="btn btn-danger">
+						Already Following
+					</button>
+				<% else %>
+					<%= simple_form_for :follows, url: follows_path do |f| %>
+						<%= f.input :user, as: :hidden, input_html: {value: tweet.user.id} %>
+						<%= f.button :submit, value: 'Follow', class:'btn btn-large btn-success' %>
+					<% end %>
+				<% end %>
 			</li>
 		<% end %>
 	<% end %>
