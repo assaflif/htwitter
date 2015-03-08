@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308181250) do
+ActiveRecord::Schema.define(version: 20150308195735) do
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20150308181250) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
+  create_table "hashtags", force: true do |t|
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "profiles", force: true do |t|
     t.string   "picture"
